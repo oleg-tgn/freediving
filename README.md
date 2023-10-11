@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
- [https://capable-freediving.netlify.app/]([http://localhost:3000](https://capable-freediving.netlify.app/))
+ [https://capable-freediving.netlify.app/](https://capable-freediving.netlify.app/)
 
 
 ## Available Scripts
