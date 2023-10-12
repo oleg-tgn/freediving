@@ -1,7 +1,8 @@
-import Sidebar from './Sidebar';
 
-function Main() {
-    return <Sidebar />;
+function Main(props) {
+    return (
+        <h1>{props.title}</h1>
+    );
 }
 
 export default Main;
