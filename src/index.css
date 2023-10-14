@@ -1,3 +1,22 @@
 body, html {
   overflow-x: hidden;
 }
+
+.app {
+  background: rgba(94, 110, 130, .15);
+}
+
+.sidebar {
+  height: calc(100vh - 56px);
+  background-color: transparent;
+  background: transparent;
+}
+
+.list-group, .list-group-item {
+  background: transparent;
+  border: none;
+}
+
+.content {
+  background: #fff;
+}

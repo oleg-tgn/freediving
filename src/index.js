@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './assets/fontawesome-free-6.4.0-web/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

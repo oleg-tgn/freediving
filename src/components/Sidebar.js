@@ -1,14 +1,10 @@
+import Nav from './Nav'
+
 function Sidebar() {
     return (
-        <ul className="list-group">
-            <li className="list-group-item">Главный экран</li>
-            <li className="list-group-item">Создать тренировку</li>
-            <li className="list-group-item">Последняя тренировка</li>
-            <li className="list-group-item">Следующая тренировка</li>
-            <li className="list-group-item">Календарь</li>
-            <li className="list-group-item" >Список</li>
-            <li className="list-group-item">Мои шаблоны</li>
-        </ul>
+        <div className="sidebar pt-3">
+            <Nav />
+        </div>
     );
 }
 
