@@ -7,9 +7,14 @@ body, html {
 }
 
 .sidebar {
-  height: calc(100vh - 56px);
   background-color: transparent;
   background: transparent;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    height: calc(100vh - 56px);
+  }
 }
 
 .list-group, .list-group-item {
@@ -19,4 +24,8 @@ body, html {
 
 .content {
   background: #fff;
+}
+
+.list-group-item i {
+  width: 18px;
 }
