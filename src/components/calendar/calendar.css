@@ -1,0 +1,51 @@
+.week {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.176);
+    border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+    .week {
+        flex-direction: row;
+    }
+}
+
+
+.week-day {
+    width: 100%;   
+    text-align: center;
+}
+
+.week-day:not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.176);
+}
+
+
+@media (min-width: 768px) {
+    .week-day {
+        width: calc(100% / 7);
+    }
+}
+
+.week-day__title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.week-day__events {
+    padding: 15px 10px;
+}
+
+.week-day__event {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.week-day__event-name {
+    margin-right: 5px;
+}
