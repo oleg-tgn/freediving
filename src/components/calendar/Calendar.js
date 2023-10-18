@@ -1,7 +1,9 @@
 import './calendar.css'
+import React, { useState } from 'react';
+
 
 function Calendar() {
-    const week = {
+    const [week, setWeek] = useState({
         "Monday": [{name: 'Train', time: '19:00 - 21:00'}],
         "Tuesday": [],
         "Wednesday": [{name: 'Train', time: '19:00 - 21:00'}],
@@ -9,13 +11,27 @@ function Calendar() {
         "Friday": [{name: 'Train', time: '19:00 - 21:00'}],
         "Saturday": [],
         "Sunday": [],
-    };
+    });
+
+    function addTrain(day) {
+        const updatedWeek = { ...week };
+        
+        if (updatedWeek[day].length > 5) {
+            alert('Max 5 train in day');
+            return;
+        }
+
+        updatedWeek[day].push({name: 'New train'});
+
+        setWeek(updatedWeek);
+        console.log("add");
+    }
 
     return (
         <div className="row">
             <div className="col-12">
-                <h1>Calendar</h1>
-                <div className='week mb-3'>
+                <h1 className="title mb-3">Calendar</h1>
+                <div className='week mb-5'>
                     {Object.entries(week).map(([day, events]) => (
                         <div key={day} className="week-day">
                             <div className='week-day__title'>{day}</div>
@@ -30,6 +46,9 @@ function Calendar() {
                                         </div>
                                     ))
                                 )}
+                            </div>
+                            <div className="week-day__add btn btn-light" onClick={() => addTrain(day)}>
+                                <i className='fa-solid fa-plus'></i> Add Train
                             </div>
                         </div>
                     ))}

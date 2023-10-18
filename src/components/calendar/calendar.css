@@ -14,6 +14,8 @@
 
 
 .week-day {
+    display: flex;
+    flex-direction: column;
     width: 100%;   
     text-align: center;
 }
@@ -46,6 +48,22 @@
     justify-content: center;
 }
 
+.week-day__event:not(:last-child) {
+    margin-bottom: 10px;
+}
+
 .week-day__event-name {
+    margin-right: 5px;
+}
+
+.week-day__add {
+    display: flex;
+    margin: auto auto 10px;
+    width: calc(100% - 20px);
+    justify-content: center;
+    align-items: center;
+}
+
+.week-day__add i {
     margin-right: 5px;
 }

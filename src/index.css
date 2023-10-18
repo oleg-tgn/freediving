@@ -26,6 +26,14 @@ body, html {
   background: #fff;
 }
 
+@media (min-width: 768px) {
+  .content {
+    background: #fff;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+}
+
 .list-group-item i {
   width: 18px;
 }

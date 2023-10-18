@@ -18,7 +18,7 @@ function App() {
           </div>
           <div className='col-12 col-md-10 content pt-3'>
             <div className="container" style={{marginLeft: 0}}>
-              <Main title="Main page"/>
+              <Main title="Home page"/>
 
               <Calendar />
             </div>
