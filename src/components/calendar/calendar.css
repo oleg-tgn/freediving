@@ -43,9 +43,10 @@
 }
 
 .week-day__event {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 .week-day__event:not(:last-child) {
