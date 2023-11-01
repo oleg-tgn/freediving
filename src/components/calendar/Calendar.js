@@ -73,6 +73,17 @@ function Calendar() {
         }
     };
 
+    const months = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const handleMonthChange = (event) => {
+        const newMonth = new Date(currentMonth);
+        newMonth.setMonth(event.target.value);
+        setCurrentMonth(newMonth);
+    };
+
     return (
         <div className="row">
           <div className="col-12">
@@ -82,9 +93,18 @@ function Calendar() {
                 {format(currentMonth, 'MMMM yyyy')}
 
                 <div className="calendar-actions">
-                    <button className="btn btn-secondary calendar-actions__btn" onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}><i class="fa-solid fa-backward"></i></button>
-                    <button className="btn btn-secondary calendar-actions__btn" onClick={() => setCurrentMonth(new Date())}>{format(currentMonth, 'MMMM yyyy')}</button>
-                    <button className="btn btn-secondary calendar-actions__btn" onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}><i class="fa-solid fa-forward"></i></button>
+                    <button className="btn btn-secondary calendar-actions__btn" onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}><i className="fa-solid fa-backward"></i></button>
+                    <button className="btn btn-secondary calendar-actions__btn calendar-actions__current" onClick={() => setCurrentMonth(new Date())}>{format(currentMonth, 'MMMM yyyy')}</button>
+                    <button className="btn btn-secondary calendar-actions__btn" onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}><i className="fa-solid fa-forward"></i></button>
+                    
+                    <select onChange={handleMonthChange} value={currentMonth.getMonth()} className='calendar-select'>
+                        {months.map((month, index) => (
+                        <option key={month} value={index}>
+                            {month}
+                        </option>
+                        ))}
+                    </select>
+
                 </div>            
             </h2>
             <div className='calendar'>
