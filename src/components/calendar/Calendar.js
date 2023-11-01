@@ -19,6 +19,8 @@ function Calendar() {
     const endDay = endOfMonth(currentMonth);
     const daysInMonth = eachDayOfInterval({ start: startDay, end: endDay });
     const firstDayOfWeek = getDay(startDay);
+    const lastDayOfWeek = getDay(endDay);
+    const emptyDaysAtEnd = (7 - (lastDayOfWeek + 1)) % 7;
 
     const [week, setWeek] = useState({
         "Monday": [],
@@ -113,8 +115,10 @@ function Calendar() {
                 ))}
                 {daysInMonth.map(day => (
                 <div key={day} className='week-day'>
-                    <div className='week-day__title'>{format(day, 'EEEE')}</div>
-                    <div className='week-day__title'>{format(day, 'dd')}</div>
+                    <div className='week-day__title'>
+                        {format(day, 'EEEE')}<br />                    
+                        {format(day, 'dd')}
+                    </div>
                     <div className='week-day__events'>
                         {events[format(day, 'yyyy-MM-dd')] && events[format(day, 'yyyy-MM-dd')].length > 0 ? (
                         events[format(day, 'yyyy-MM-dd')].map(event => (
@@ -132,6 +136,9 @@ function Calendar() {
                         <i className='fa-solid fa-plus'></i> Add Train
                     </div>
                 </div>
+                ))}
+                {Array.from({ length: emptyDaysAtEnd }, (_, index) => (
+                    <div key={`empty-end-${index}`} className='week-day empty'></div>
                 ))}
             </div>
           </div>
