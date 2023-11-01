@@ -89,11 +89,10 @@ function Calendar() {
     return (
         <div className="row">
           <div className="col-12">
-            <h1 className="title mb-3">Calendar</h1>
-            
-            <h2 className='calendar-title'>
-                {format(currentMonth, 'MMMM yyyy')}
-
+            <h1 className="title mb-3 calendar-title">
+                <span>Calendar</span>
+            </h1>
+            <div>
                 <div className="calendar-actions">
                     <button className="btn btn-secondary calendar-actions__btn" onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}><i className="fa-solid fa-backward"></i></button>
                     <button className="btn btn-secondary calendar-actions__btn calendar-actions__current" onClick={() => setCurrentMonth(new Date())}>{format(currentMonth, 'MMMM yyyy')}</button>
@@ -106,9 +105,9 @@ function Calendar() {
                         </option>
                         ))}
                     </select>
-
-                </div>            
-            </h2>
+                </div>
+                </div>
+        
             <div className='calendar'>
                 {Array.from({ length: firstDayOfWeek }, (_, index) => (
                     <div key={`empty-${index}`} className='week-day empty'></div>
