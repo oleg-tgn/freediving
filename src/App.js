@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
 import Calendar from './components/calendar/Calendar';
-
+import TrainsProvider from './providers/TrainsProvider';
 
 function App() {
   return (
@@ -18,9 +18,11 @@ function App() {
           </div>
           <div className='col-12 col-md-10 content pt-3'>
             <div className="container" style={{marginLeft: 0}}>
-              <Main title="Home page"/>
+                <TrainsProvider>
+                  <Main title="Home page"/>
 
-              <Calendar />
+                  <Calendar />
+                </TrainsProvider>
             </div>
           </div>
         </div> 

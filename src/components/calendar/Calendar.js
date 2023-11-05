@@ -9,9 +9,12 @@ import './calendar.css';
 
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths, getDay } from 'date-fns';
 
+import { useTrainsListContext } from "../../providers/TrainsProvider";
+
 function Calendar() {
+    const { events, addTraining, updateTraining } = useTrainsListContext();
+
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const [events, setEvents] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [editingTraining, setEditingTraining] = useState(null);
 
@@ -21,17 +24,6 @@ function Calendar() {
     const firstDayOfWeek = getDay(startDay);
     const lastDayOfWeek = getDay(endDay);
     const emptyDaysAtEnd = (7 - (lastDayOfWeek + 1)) % 7;
-
-    const [week, setWeek] = useState({
-        "Monday": [],
-        "Tuesday": [],
-        "Wednesday": [],
-        "Thursday": [],
-        "Friday": [],
-        "Saturday": [],
-        "Sunday": [],
-    });
-
 
     const [selectedDay, setSelectedDay] = useState(null);
 
@@ -43,28 +35,11 @@ function Calendar() {
     function handleCloseModal() {
         setShowModal(false);
     }
-
-    const addTraining = (day, training) => {
-        setWeek((prevWeek) => {
-          const updatedDay = [...prevWeek[day], training];
-          return { ...prevWeek, [day]: updatedDay };
-        });
-        handleCloseModal();
-    };
     
     const handleEditTraining = (day, training) => {
         setSelectedDay(day);
         setEditingTraining(training);
         setShowModal(true);
-    };
-
-    const updateTraining = (day, newTraining) => {
-        setWeek((prevWeek) => {
-          const updatedDay = prevWeek[day].map(training => training === editingTraining ? newTraining : training);
-          return { ...prevWeek, [day]: updatedDay };
-        });
-        handleCloseModal();
-        setEditingTraining(null);
     };
 
     const handleSubmit = (training) => {
