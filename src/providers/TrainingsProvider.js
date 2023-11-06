@@ -1,10 +1,19 @@
-import React from "react";
 import { format } from 'date-fns';
+import React, { useEffect } from 'react';
 
 const TrainingContext = React.createContext();
 
 const TrainsProvider = ({ children }) => {
-    const [trainings, setTrainings] = React.useState({});
+    const [trainings, setTrainings] = React.useState(() => {
+        // Загрузка начального состояния из localStorage
+        const savedTrainings = localStorage.getItem('trainings');
+        return savedTrainings ? JSON.parse(savedTrainings) : {};
+    });
+
+    useEffect(() => {
+        // Сохранение trainings в localStorage при их изменении
+        localStorage.setItem('trainings', JSON.stringify(trainings));
+    }, [trainings]);
 
     const addTraining = (day, training) => {
         const formattedDay = format(day, 'yyyy-MM-dd');
