@@ -11,9 +11,9 @@ function Nav() {
                         <i className="fa-solid fa-house"></i>Home
                     </Link>
                 </li>                
-                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-plus"></i>Create workout</span></li>
-                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-play"></i>Last workout</span></li>
-                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-forward"></i>Next workout</span></li>
+                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-plus"></i>Create training</span></li>
+                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-play"></i>Last training</span></li>
+                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-forward"></i>Next training</span></li>
                 <li className="sidebar-menu__item">
                     <Link to="/calendar" className={`sidebar-menu__link ${currentPath === '/calendar' || currentPath === ''? 'active-item' : ''}`}>
                         <i className="fa-solid fa-calendar-days"></i>Calendar

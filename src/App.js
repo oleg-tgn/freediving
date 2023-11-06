@@ -20,7 +20,7 @@ function App() {
             <Sidebar />
           </div>
           <div className='col-12 col-md-10 content pt-3'>
-            <div className="container" style={{marginLeft: 0}}>
+            <div className="container-fluid">
                 <TrainsProvider>
                   <Routes>
                     <Route path="/" element={<Home title="Home page"/>} />
