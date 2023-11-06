@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
 import Homepage from './components/Homepage';
 import Calendar from './components/Calendar/Calendar';
 import TrainingsList from './components/TrainingsList/TrainingsList';

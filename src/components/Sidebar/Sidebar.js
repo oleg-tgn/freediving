@@ -1,4 +1,5 @@
 import Nav from './Nav'
+import './sidebar.css'
 
 function Sidebar() {
     return (

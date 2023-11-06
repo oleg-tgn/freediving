@@ -1,0 +1,20 @@
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.sidebar-menu__item {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.sidebar-menu__item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu__item i {
+    width: 16px;
+    margin-right: 10px;
+}
