@@ -1,9 +1,10 @@
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Main from './components/Main';
+import Homepage from './components/Homepage';
 import Calendar from './components/calendar/Calendar';
 import TrainsProvider from './providers/TrainsProvider';
+import {Routes, Route, Link} from 'react-router-dom';
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
           <div className='col-12 col-md-10 content pt-3'>
             <div className="container" style={{marginLeft: 0}}>
                 <TrainsProvider>
-                  <Main title="Home page"/>
-
-                  <Calendar />
+                  <Routes>
+                    <Route path="/" element={<Homepage title="Home page"/>} />
+                    <Route path="/calendar" element={<Calendar />} />      
+                  </Routes>
                 </TrainsProvider>
             </div>
           </div>

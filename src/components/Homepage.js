@@ -1,6 +1,6 @@
 import Card from './Card'
 
-function Main(props) {
+function Homepage(props) {
     return (
         <>            
             <h1 className="title mb-3">{props.title}</h1>
@@ -28,4 +28,4 @@ function Main(props) {
     );
 }
 
-export default Main;
+export default Homepage;
