@@ -2,8 +2,8 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from './components/Home';
-import Calendar from './components/Calendar/Calendar';
 import TrainingsList from './components/TrainingsList/TrainingsList';
+import Calendar from './components/Calendar/Calendar';
 
 import TrainsProvider from './providers/TrainingsProvider';
 import {Routes, Route, Link} from 'react-router-dom';
