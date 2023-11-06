@@ -1,4 +1,3 @@
-import { backpack } from 'fontawesome';
 import {Link} from 'react-router-dom';
 
 function Card(props) {
