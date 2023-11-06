@@ -6,7 +6,7 @@ import TrainingsList from './components/TrainingsList/TrainingsList';
 import Calendar from './components/Calendar/Calendar';
 
 import TrainsProvider from './providers/TrainingsProvider';
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 function App() {
   return (

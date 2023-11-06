@@ -1,11 +1,10 @@
-import './calendar.css'
-import React, { useState, useContext } from 'react';
+import './Сalendar.css'
+import React, { useState } from 'react';
 
 import Modal from 'react-bootstrap/Modal';
 import TrainingForm from '../TrainingForm/TrainingForm'; 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './calendar.css';
 
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths, getDay } from 'date-fns';
 
@@ -58,9 +57,9 @@ function Calendar() {
         "July", "August", "September", "October", "November", "December"
     ];
 
-    const handleMonthChange = (training) => {
+    const handleMonthChange = (event) => {
         const newMonth = new Date(currentMonth);
-        newMonth.setMonth(training.target.value);
+        newMonth.setMonth(event.target.value);
         setCurrentMonth(newMonth);
     };
 
@@ -130,7 +129,7 @@ function Calendar() {
             </Modal>
             </div>
         </div>
-      );
-    }
+    );
+};
     
 export default Calendar;
