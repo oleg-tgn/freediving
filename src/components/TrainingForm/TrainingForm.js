@@ -9,8 +9,8 @@ export default function TrainingForm({ onSubmit, editingTraining }) {
       time: { value: '', type: 'time', label: 'Start Time' },
       exercise: { value: '', type: 'text', label: 'Exercise Name' },
       distance: { value: '', type: 'number', label: 'Distance (meters)' },
-      rest: { value: '', type: 'time', label: 'Rest (seconds)' },
-      numberApproaches: { value: '', type: 'number', label: 'Number Approaches' },
+      rest: { value: '', type: 'time', label: 'Rest (min)' },
+      numberApproaches: { value: '', type: 'number', label: 'Number Approaches' }
   });
 
   const handleChange = (e) => {

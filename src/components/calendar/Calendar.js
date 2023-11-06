@@ -34,6 +34,7 @@ function Calendar() {
 
     function handleCloseModal() {
         setShowModal(false);
+        setEditingTraining(null);
     }
     
     const handleEditTraining = (day, training) => {
@@ -48,6 +49,7 @@ function Calendar() {
         } else {
             addTraining(selectedDay, training);
         }
+        setEditingTraining(null);
         setShowModal(false);
     };
 

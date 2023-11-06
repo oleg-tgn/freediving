@@ -8,7 +8,6 @@ const TrainsProvider = ({ children }) => {
 
     const addTraining = (day, training) => {
         const formattedDay = format(day, 'yyyy-MM-dd');
-        training.created = new Date();
         setTrainings(prevTrainings => {
             const existingTrainings = prevTrainings[formattedDay] || [];
             const updatedTrainings = [...existingTrainings, training];
