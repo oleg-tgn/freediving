@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import Homepage from './components/Homepage';
+import Home from './components/Home';
 import Calendar from './components/Calendar/Calendar';
 import TrainingsList from './components/TrainingsList/TrainingsList';
 
@@ -23,7 +23,7 @@ function App() {
             <div className="container" style={{marginLeft: 0}}>
                 <TrainsProvider>
                   <Routes>
-                    <Route path="/" element={<Homepage title="Home page"/>} />
+                    <Route path="/" element={<Home title="Home page"/>} />
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/trainings-list" element={<TrainingsList />} />                      
                   </Routes>

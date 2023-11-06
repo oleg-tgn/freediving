@@ -1,3 +1,6 @@
+import { backpack } from 'fontawesome';
+import {Link} from 'react-router-dom';
+
 function Card(props) {
     return (
         <div className="card mb-3">
@@ -9,7 +12,13 @@ function Card(props) {
                 <h5 className="card-title">{props.title}</h5>
                 <p className="card-text">{props.description}</p>
                 <div className="d-grid gap-2">
-                    <button className="btn btn-primary">{props.linkText}</button>
+                <Link 
+                    to={props.link} 
+                    className={`btn btn-primary ${props.disabled ? 'disabled' : ''}`}
+                    style={props.disabled ? { pointerEvents: 'none', opacity: 0.5, background: 'grey', borderColor: 'grey' } : {}}
+                >
+                    {props.linkText}
+                </Link>
                 </div>
             </div>
         </div>

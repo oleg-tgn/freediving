@@ -3,6 +3,7 @@
     flex-direction: column;
     text-decoration: none;
     list-style-type: none;
+    padding-left: 10px;
 }
 
 .sidebar-menu__item {
@@ -11,10 +12,34 @@
 }
 
 .sidebar-menu__item:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .sidebar-menu__item i {
     width: 16px;
     margin-right: 10px;
+}
+
+.sidebar-menu__link {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-menu__link.disabled {
+    opacity: .4;
+}
+
+.sidebar-menu__link:not(.disabled):hover {
+    color: #fff;
+    background-color: rgb(13, 110, 253);
+}
+
+.active-item {
+    color: #fff;
+    background-color: rgb(13, 110, 253);
 }
