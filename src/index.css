@@ -37,3 +37,7 @@ body, html {
 .list-group-item i {
   width: 18px;
 }
+
+.list-group-item i {
+  margin-right: 5px;
+}

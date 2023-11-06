@@ -1,5 +1,5 @@
 import './calendar.css'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Modal from 'react-bootstrap/Modal';
 import TrainingForm from '../TrainingForm/TrainingForm'; 
@@ -9,10 +9,10 @@ import './calendar.css';
 
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths, getDay } from 'date-fns';
 
-import { useTrainsListContext } from "../../providers/TrainsProvider";
+import { useTrainingsContext } from "../../providers/TrainingsProvider";
 
 function Calendar() {
-    const { events, addTraining, updateTraining } = useTrainsListContext();
+    const { trainings, addTraining, updateTraining } = useTrainingsContext();
 
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [showModal, setShowModal] = useState(false);
@@ -48,6 +48,7 @@ function Calendar() {
         } else {
             addTraining(selectedDay, training);
         }
+        setShowModal(false);
     };
 
     const months = [
@@ -55,9 +56,9 @@ function Calendar() {
         "July", "August", "September", "October", "November", "December"
     ];
 
-    const handleMonthChange = (event) => {
+    const handleMonthChange = (training) => {
         const newMonth = new Date(currentMonth);
-        newMonth.setMonth(event.target.value);
+        newMonth.setMonth(training.target.value);
         setCurrentMonth(newMonth);
     };
 
@@ -93,17 +94,17 @@ function Calendar() {
                         {format(day, 'EEEE')}<br />                    
                         {format(day, 'dd')}
                     </div>
-                    <div className='week-day__events'>
-                        {events[format(day, 'yyyy-MM-dd')] && events[format(day, 'yyyy-MM-dd')].length > 0 ? (
-                        events[format(day, 'yyyy-MM-dd')].map(event => (
-                            <div key={event.name + event.time} className='btn btn-outline-primary week-day__event'
-                                onClick={() => handleEditTraining(day, event)}>
-                            <div className='week-day__event-name'>{event.title.value}</div>
-                            <div className='week-day__event-time'>{event.time.value}</div>
+                    <div className='week-day__trainings'>
+                        {trainings[format(day, 'yyyy-MM-dd')] && trainings[format(day, 'yyyy-MM-dd')].length > 0 ? (
+                        trainings[format(day, 'yyyy-MM-dd')].map(training => (
+                            <div key={training.name + training.time} className='btn btn-outline-primary week-day__training'
+                                onClick={() => handleEditTraining(day, training)}>
+                            <div className='week-day__training-name'>{training.title.value}</div>
+                            <div className='week-day__training-time'>{training.time.value}</div>
                             </div>
                         ))
                         ) : (
-                        <div className='week-day__event-name'><i>Rest</i></div>
+                        <div className='week-day__training-name'><i>Rest</i></div>
                         )}
                     </div>
                     <div className="week-day__add btn btn-light" onClick={() => handleShowModal(day)}>

@@ -35,7 +35,7 @@ export default function TrainingForm({ onSubmit, editingTraining }) {
   return (
     <form onSubmit={handleSubmit}>
       {Object.entries(form).map(([name, field]) => (
-            <div key={name}>
+            <div key={name}>                
                 <label className="form-label">
                     {field.label}:
                 </label>

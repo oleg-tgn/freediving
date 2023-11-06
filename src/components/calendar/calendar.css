@@ -58,22 +58,22 @@
     background: rgb(248, 249, 250);
 }
 
-.week-day__events {
+.week-day__trainings {
     padding: 15px 10px;
 }
 
-.week-day__event {
+.week-day__training {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
     width: 100%;
 }
 
-.week-day__event:not(:last-child) {
+.week-day__training:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.week-day__event-name {
+.week-day__training-name {
     margin-right: 5px;
 }
 
