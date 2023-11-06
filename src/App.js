@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from './components/Home';
 import TrainingsList from './components/TrainingsList/TrainingsList';
-import Calendar from './components/Calendar/Calendar';
+import Calendar from './components/MyCalendar/Calendar';
 
 import TrainsProvider from './providers/TrainingsProvider';
 import {Routes, Route} from 'react-router-dom';
