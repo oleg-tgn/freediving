@@ -75,7 +75,7 @@ function Training(props) {
                 {selectedTrain 
                     ? <TrainingForm editingTraining={selectedTrain} readonly="true"/>
                     : <p>Training has not been added yet. You can go to the <Link to="/calendar">Calendar</Link> to add  
-                     your {props.type == 'last'? 'first' : 'next'} training session.</p>
+                     your {props.type === 'last'? 'first' : 'next'} training session.</p>
                 }
                 
             </div>
