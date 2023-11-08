@@ -9,10 +9,10 @@ function Home(props) {
                     <Card title="Create training" link="/" linkText="Create" icon="fa-solid fa-plus" description="Create yor training" disabled="true"/>
                 </div>
                 <div className="col-12 col-md-4 col-lg-3">
-                    <Card title="Last training" link="/" linkText="View" icon="fa-solid fa-play"  description="See yor last training" disabled="true"/>
+                    <Card title="Last training" link="/last-training" linkText="View" icon="fa-solid fa-play"  description="See yor last training"/>
                 </div>
                 <div className="col-12 col-md-4 col-lg-3">
-                    <Card title="Next training" link="/" linkText="View" icon="fa-solid fa-forward" description="See yor next training" disabled="true"/>
+                    <Card title="Next training" link="/next-training" linkText="View" icon="fa-solid fa-forward" description="See yor next training"/>
                 </div>
                 <div className="col-12 col-md-4 col-lg-3">
                     <Card title="Calendar" link="/calendar" linkText="View" icon="fa-solid fa-calendar-days" description="See your personal calendar"/>
