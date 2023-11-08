@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function TrainingForm({ onSubmit, editingTraining }) {
+export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
   const [form, setForm] = useState({
       title: { value: '', type: 'text', label: 'Title' },
       time: { value: '', type: 'time', label: 'Start Time' },
@@ -45,12 +45,16 @@ export default function TrainingForm({ onSubmit, editingTraining }) {
                     value={field.value}
                     onChange={handleChange}
                     className="form-control"
+                    disabled={!!readonly}
                 />
             </div>
         ))}
-      <Button variant="primary" type="submit" className='mt-3'>
-        {editingTraining ? 'Update' : 'Add'} Train
-      </Button>
+      {!readonly ?
+        <Button variant="primary" type="submit" className='mt-3'>
+          {editingTraining ? 'Update' : 'Add'} Train
+        </Button>
+        : ''
+      }
     </form>
   );
 }

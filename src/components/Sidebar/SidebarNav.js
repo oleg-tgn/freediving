@@ -1,6 +1,6 @@
 import {Link, useLocation } from 'react-router-dom';
 
-function Nav() {
+function SidebarNav() {
     const location = useLocation();
     const currentPath = location.pathname;
     return (
@@ -12,8 +12,16 @@ function Nav() {
                     </Link>
                 </li>                
                 <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-plus"></i>Create training</span></li>
-                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-play"></i>Last training</span></li>
-                <li className="sidebar-menu__item"><span className='sidebar-menu__link disabled'><i className="fa-solid fa-forward"></i>Next training</span></li>
+                <li className="sidebar-menu__item">
+                    <Link to="/last-training" className={`sidebar-menu__link ${currentPath === '/last-training' || currentPath === ''? 'active-item' : ''}`}>
+                        <i className="fa-solid fa-play"></i>Last training
+                    </Link>
+                </li>
+                <li className="sidebar-menu__item">
+                    <Link to="/next-training" className={`sidebar-menu__link ${currentPath === '/next-training' || currentPath === ''? 'active-item' : ''}`}>
+                    <i className="fa-solid fa-forward"></i>Next training
+                    </Link>
+                </li>
                 <li className="sidebar-menu__item">
                     <Link to="/calendar" className={`sidebar-menu__link ${currentPath === '/calendar' || currentPath === ''? 'active-item' : ''}`}>
                         <i className="fa-solid fa-calendar-days"></i>Calendar
@@ -30,4 +38,4 @@ function Nav() {
     );
 }
 
-export default Nav;
+export default SidebarNav;

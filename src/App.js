@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Home from './components/Home';
 import TrainingsList from './components/TrainingsList/TrainingsList';
 import Calendar from './components/MyCalendar/Calendar';
+import Training from './components/Training/Training';
 
 import TrainsProvider from './providers/TrainingsProvider';
 import {Routes, Route} from 'react-router-dom';
@@ -25,7 +26,9 @@ function App() {
                   <Routes>
                     <Route path="/" element={<Home title="Home page"/>} />
                     <Route path="/calendar" element={<Calendar />} />
-                    <Route path="/trainings-list" element={<TrainingsList />} />                      
+                    <Route path="/trainings-list" element={<TrainingsList />} />
+                    <Route path="/last-training" element={<Training type="last"/>} />
+                    <Route path="/next-training" element={<Training type="next"/>} />
                   </Routes>
                 </TrainsProvider>
             </div>
