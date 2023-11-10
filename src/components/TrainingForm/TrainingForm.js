@@ -5,7 +5,6 @@ import './TrainingForm.css';
 
 export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
   const emptyExercise = {
-      time: { value: '', type: 'time', label: 'Start Time' },
       exercise: { value: '', type: 'text', label: 'Exercise Name' },
       distance: { value: '', type: 'number', label: 'Distance (meters)' },
       rest: { value: '', type: 'time', label: 'Rest (min)' },
@@ -14,6 +13,7 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
 
   const emptyTrainingForm = {
     name: '',
+    time: '',
     exercises: [emptyExercise]
   };
 
@@ -25,8 +25,8 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
     setExercisesForm({...exercisesForm, exercises: updatedExercises});
   };
 
-  const handleNameChange = (value) => {
-    setExercisesForm({...exercisesForm, name: value});
+  const handleTextFieldChange = (field, value) => {
+    setExercisesForm({ ...exercisesForm, [field]: value });
   };
 
   const addExercise = () => {
@@ -45,7 +45,15 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
         type='text'
         name='name'
         value={exercisesForm.name}
-        onChange={(e) => handleNameChange(e.target.value)}
+        onChange={(e) => handleTextFieldChange('name', e.target.value)}
+        className="form-control"
+      />
+      <label className="form-label">Start Time:</label>
+      <input
+        type='time'
+        name='time'
+        value={exercisesForm.time}
+        onChange={(e) => handleTextFieldChange('time', e.target.value)}
         className="form-control"
       />
       {exercisesForm.exercises.map((exercise, index) => (

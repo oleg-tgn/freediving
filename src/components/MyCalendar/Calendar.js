@@ -25,9 +25,11 @@ function Calendar() {
     const emptyDaysAtEnd = (7 - (lastDayOfWeek + 1)) % 7;
 
     const [selectedDay, setSelectedDay] = useState(null);
+    const [selectedTitleDay, setSelectedTitleDay] = useState("");
 
     function handleShowModal(day) {
         setSelectedDay(day);
+        setSelectedTitleDay(format(day, 'dd/MM/yyyy'));
         setShowModal(true);
     }
 
@@ -62,8 +64,6 @@ function Calendar() {
         newMonth.setMonth(event.target.value);
         setCurrentMonth(newMonth);
     };
-
-    console.log(trainings);
 
     return (
         <div className="row">
@@ -100,23 +100,12 @@ function Calendar() {
                     </div>
                     <div className='week-day__trainings'>
                         {trainings[format(day, 'yyyy-MM-dd')] && trainings[format(day, 'yyyy-MM-dd')].length > 0 ? (
-                        trainings[format(day, 'yyyy-MM-dd')].map(training => (
-                            <>
-                            {training.length > 0 
-                                ? 'yes'
-                                : 'No'
-                            }
-
-                            {format(day, 'yyyy-MM-dd')}
-                            </>
-                           
-                            // <div key={training[0].name + training[0].time} className='btn btn-outline-primary week-day__training'
-                            //     onClick={() => handleEditTraining(day, training)}>
-                            // <div className='week-day__training-name'>{training[0].title.value}</div>
-
-                            // <div className='week-day__training-name'>{training[0].title.value}</div>
-                            // <div className='week-day__training-time'>{training[0].time.value}</div>
-                            // </div>
+                        trainings[format(day, 'yyyy-MM-dd')].map(training => (                           
+                            <div key={training.name + training.time} className='btn btn-outline-primary week-day__training'
+                                 onClick={() => handleEditTraining(day, training)}>
+                                <div className='week-day__training-name'>{training.name}</div>
+                                <div className='week-day__training-time'>{training.time}</div>
+                            </div>
                         ))
                         ) : (
                         <div className='week-day__training-name'><i>Rest</i></div>
@@ -134,7 +123,7 @@ function Calendar() {
 
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
-                <Modal.Title>{editingTraining ? 'Edit' : 'Add'} Train</Modal.Title>
+                <Modal.Title>{editingTraining ? 'Edit' : 'Add'} Train {selectedTitleDay}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <TrainingForm onSubmit={handleSubmit} editingTraining={editingTraining} />
