@@ -47,9 +47,9 @@ function findNextTrain(trainings) {
 function Training(props) {
     const { trainings } = useTrainingsContext();
     
-    let selectedTrain = {};
+    let selectedTrain = null;
     let pageTitle = '';
-    if (trainings) {
+    if (trainings.length > 0) {
         switch (props.type) {
             case 'last': 
                 selectedTrain = findLastTrain(trainings);
