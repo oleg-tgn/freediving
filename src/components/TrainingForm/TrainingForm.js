@@ -5,7 +5,6 @@ import './TrainingForm.css';
 
 export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
   const emptyExercise = {
-      title: { value: '', type: 'text', label: 'Title' },
       time: { value: '', type: 'time', label: 'Start Time' },
       exercise: { value: '', type: 'text', label: 'Exercise Name' },
       distance: { value: '', type: 'number', label: 'Distance (meters)' },
@@ -13,41 +12,54 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
       numberApproaches: { value: '', type: 'number', label: 'Number Approaches' }
   };
 
-  const [exercises, setExercises] = useState(editingTraining || [emptyExercise]);
+  const emptyTrainingForm = {
+    name: '',
+    exercises: [emptyExercise]
+  };
 
-  const handleExerciseChange = (index, e) => {
-    const newExercises = [...exercises];
-    newExercises[index][e.target.name].value = e.target.value;
-    setExercises(newExercises);
+  const [exercisesForm, setExercisesForm] = useState(editingTraining || emptyTrainingForm);
+
+  const handleExerciseChange = (exerciseIndex, field, value) => {
+    const updatedExercises = [...exercisesForm.exercises];
+    updatedExercises[exerciseIndex][field].value = value;
+    setExercisesForm({...exercisesForm, exercises: updatedExercises});
+  };
+
+  const handleNameChange = (value) => {
+    setExercisesForm({...exercisesForm, name: value});
   };
 
   const addExercise = () => {
-    if (exercises.length < 10)
-      setExercises([...exercises, emptyExercise]);
+    setExercisesForm({...exercisesForm, exercises: [...exercisesForm.exercises, emptyExercise]});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(exercises);
+    onSubmit(exercisesForm);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {exercises.map((exercise, index) => (
-        <div key={index}>        
-          <h3 className='exercise-title'>Exercise {index + 1}:</h3>
+      <label className="form-label">Train Title:</label>
+      <input
+        type='text'
+        name='name'
+        value={exercisesForm.name}
+        onChange={(e) => handleNameChange(e.target.value)}
+        className="form-control"
+      />
+      {exercisesForm.exercises.map((exercise, index) => (
+        <div key={index}>
+          <h3 className='exercise-title'>Exercise {index + 1}</h3>
           {Object.entries(exercise).map(([name, field]) => (
-            <div key={name}>                
-              <label className="form-label">
-                  {field.label}:
-              </label>
+            <div key={name}>
+              <label className="form-label">{field.label}:</label>
               <input
-                  type={field.type}
-                  name={name}
-                  value={field.value}
-                  onChange={(e) => handleExerciseChange(index, e)}
-                  className="form-control"
-                  disabled={!!readonly}
+                type={field.type}
+                name={name}
+                value={field.value}
+                onChange={(e) => handleExerciseChange(index, name, e.target.value)}
+                className="form-control"
               />
             </div>
           ))}
@@ -55,12 +67,13 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
       ))}
       {!readonly &&
         <>
-          <Button variant="secondary" onClick={addExercise} className='mt-3 button-add-train' disabled={exercises.length >= 10}>
-            Add Exercise
-          </Button>
-          <Button variant="primary" type="submit" className='mt-3'>
+          <Button variant="primary" type="submit" className='mt-3' style={{'marginRight': '15px'}}>
             {editingTraining ? 'Update' : 'Submit'} Training
           </Button>
+
+          <Button variant="secondary" onClick={addExercise} className='mt-3' disabled={exercisesForm.exercises.length >= 10}>
+            <i className="fa-solid fa-plus"></i> Add Exercise
+          </Button>          
         </>
       }
     </form>

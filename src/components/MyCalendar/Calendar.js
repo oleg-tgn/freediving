@@ -63,6 +63,8 @@ function Calendar() {
         setCurrentMonth(newMonth);
     };
 
+    console.log(trainings);
+
     return (
         <div className="row">
             <div className="col-12">
@@ -99,15 +101,26 @@ function Calendar() {
                     <div className='week-day__trainings'>
                         {trainings[format(day, 'yyyy-MM-dd')] && trainings[format(day, 'yyyy-MM-dd')].length > 0 ? (
                         trainings[format(day, 'yyyy-MM-dd')].map(training => (
-                            <div key={training.name + training.time} className='btn btn-outline-primary week-day__training'
-                                onClick={() => handleEditTraining(day, training)}>
-                            <div className='week-day__training-name'>{training.title.value}</div>
-                            <div className='week-day__training-time'>{training.time.value}</div>
-                            </div>
+                            <>
+                            {training.length > 0 
+                                ? 'yes'
+                                : 'No'
+                            }
+
+                            {format(day, 'yyyy-MM-dd')}
+                            </>
+                           
+                            // <div key={training[0].name + training[0].time} className='btn btn-outline-primary week-day__training'
+                            //     onClick={() => handleEditTraining(day, training)}>
+                            // <div className='week-day__training-name'>{training[0].title.value}</div>
+
+                            // <div className='week-day__training-name'>{training[0].title.value}</div>
+                            // <div className='week-day__training-time'>{training[0].time.value}</div>
+                            // </div>
                         ))
                         ) : (
                         <div className='week-day__training-name'><i>Rest</i></div>
-                        )}
+                        )} 
                     </div>
                     <div className="week-day__add btn btn-light" onClick={() => handleShowModal(day)}>
                         <i className='fa-solid fa-plus'></i> Add Train
