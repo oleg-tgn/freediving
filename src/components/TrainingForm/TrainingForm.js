@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './TrainingForm.css';
 
-export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
+export default function TrainingForm({ onSubmit, editingTraining, readonly=false }) {
   const emptyExercise = {
       exercise: { value: '', type: 'text', label: 'Exercise Name' },
       distance: { value: '', type: 'number', label: 'Distance (meters)' },
@@ -39,7 +39,7 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='mb-5'>
       <label className="form-label">Train Title:</label>
       <input
         type='text'
@@ -47,6 +47,7 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
         value={exercisesForm.name}
         onChange={(e) => handleTextFieldChange('name', e.target.value)}
         className="form-control"
+        disabled={readonly}
       />
       <label className="form-label">Start Time:</label>
       <input
@@ -55,6 +56,7 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
         value={exercisesForm.time}
         onChange={(e) => handleTextFieldChange('time', e.target.value)}
         className="form-control"
+        disabled={readonly}
       />
       {exercisesForm.exercises.map((exercise, index) => (
         <div key={index}>
@@ -68,6 +70,7 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
                 value={field.value}
                 onChange={(e) => handleExerciseChange(index, name, e.target.value)}
                 className="form-control"
+                disabled={readonly}
               />
             </div>
           ))}

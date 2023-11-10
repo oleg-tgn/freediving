@@ -8,6 +8,7 @@ import { format, isBefore, isEqual, isAfter } from 'date-fns';
 
 import { useTrainingsContext } from "../../providers/TrainingsProvider";
 import { Link } from 'react-router-dom';
+import { commentSlash } from 'fontawesome';
 
 function findLastTrain(trainings) {
     if (!trainings) return null;
@@ -22,6 +23,8 @@ function findLastTrain(trainings) {
             }
         }
     });
+    if (!closestLessOrEqual) return null;
+
     const formattedDay = format(closestLessOrEqual, 'yyyy-MM-dd');
     return trainings[formattedDay][0];
 }
@@ -29,7 +32,7 @@ function findLastTrain(trainings) {
 function findNextTrain(trainings) {
     if (!trainings) return null;
     const currentDate = new Date();
-    let closestGreater;
+    let closestGreater = null;
 
     Object.keys(trainings).forEach(dateStr => {
         const date = new Date(dateStr);
@@ -40,6 +43,8 @@ function findNextTrain(trainings) {
         }
     });
 
+    if (!closestGreater) return null;
+
     const formattedDay = format(closestGreater, 'yyyy-MM-dd');
     return trainings[formattedDay][0];
 }
@@ -49,7 +54,7 @@ function Training(props) {
     
     let selectedTrain = null;
     let pageTitle = '';
-    if (trainings.length > 0) {
+    if (!!trainings) {
         switch (props.type) {
             case 'last': 
                 selectedTrain = findLastTrain(trainings);
@@ -64,8 +69,6 @@ function Training(props) {
         }
     }
 
-    console.log(selectedTrain);
-
     return (
         <div className="row">
             <div className="col-12">
@@ -73,7 +76,7 @@ function Training(props) {
                     <span>{pageTitle} Training</span>
                 </h1>
                 {selectedTrain 
-                    ? <TrainingForm editingTraining={selectedTrain} readonly="true"/>
+                    ? <TrainingForm editingTraining={selectedTrain} readonly={true}/>
                     : <p>Training has not been added yet. You can go to the <Link to="/calendar">Calendar</Link> to add  
                      your {props.type === 'last'? 'first' : 'next'} training session.</p>
                 }
