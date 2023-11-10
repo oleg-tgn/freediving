@@ -17,12 +17,13 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
 
   const handleExerciseChange = (index, e) => {
     const newExercises = [...exercises];
-    newExercises[index][e.target.name] = e.target.value;
+    newExercises[index][e.target.name].value = e.target.value;
     setExercises(newExercises);
   };
 
   const addExercise = () => {
-    setExercises([...exercises, emptyExercise]);
+    if (exercises.length < 10)
+      setExercises([...exercises, emptyExercise]);
   };
 
   const handleSubmit = (e) => {
@@ -54,7 +55,7 @@ export default function TrainingForm({ onSubmit, editingTraining, readonly }) {
       ))}
       {!readonly &&
         <>
-          <Button variant="secondary" onClick={addExercise} className='mt-3 button-add-train'>
+          <Button variant="secondary" onClick={addExercise} className='mt-3 button-add-train' disabled={exercises.length >= 10}>
             Add Exercise
           </Button>
           <Button variant="primary" type="submit" className='mt-3'>
